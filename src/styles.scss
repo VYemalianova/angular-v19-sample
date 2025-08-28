@@ -1,1 +1,193 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'sass:string';
+
+@use 'assets/styles/color-vars.scss' as colors;
+@use 'assets/styles/color-classes.scss';
+@use 'assets/styles/mixins/text.scss';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  color: colors.$black;
+  background-color: #ffffff;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// ----------------------------------------------
+// Spacing Helper
+// ----------------------------------------------
+// This SCSS helper generates utility classes for
+// margin and padding based on predefined sizes.
+//
+// Usage in HTML/JSX:
+//   <div class="mt-s pr-xl">...</div>
+//
+// Class naming convention:
+//   m{side abbreviation}-{size}
+//   p{side abbreviation}-{size}
+//
+// Examples:
+//   mt-s   => margin-top: 12px;
+//   pb-xl  => padding-bottom: 32px;
+//
+// Available sizes: xs, s, m, l, xl
+// Available sides: top (t), bottom (b), left (l), right (r)
+//
+// ----------------------------------------------
+$spaceamounts: (
+  'xs': 8px,
+  's': 12px,
+  'm': 16px,
+  'l': 24px,
+  'xl': 32px,
+);
+$sides: (top, bottom, left, right);
+
+@each $name, $space in $spaceamounts {
+  @each $side in $sides {
+    .m#{string.slice($side, 0, 1)}-#{$name} {
+      margin-#{$side}: #{$space} !important;
+    }
+
+    .p#{string.slice($side, 0, 1)}-#{$name} {
+      padding-#{$side}: #{$space} !important;
+    }
+  }
+}
+
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 48px !important;
+  line-height: 58px !important;
+  margin: 0;
+}
+
+h2 {
+  font-size: 36px !important;
+  line-height: 48px !important;
+  margin: 0;
+}
+
+h3 {
+  font-size: 28px !important;
+  line-height: 33px !important;
+  margin: 0;
+}
+
+h4 {
+  font-size: 14px !important;
+  line-height: 20px !important;
+  font-weight: 700 !important;
+  margin: 0;
+}
+
+.text-caps {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: colors.$gun-powder;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.link,
+.link__underline {
+  color: colors.$gun-powder;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    color: colors.$purple-01;
+  }
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link__underline {
+  text-decoration: underline;
+}
+
+.gradient {
+  &--text {
+    font-weight: 700;
+    background-image: linear-gradient(45deg, colors.$purple-01, colors.$brink-pink);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+  }
+
+  &--moonraker-remy {
+    background: linear-gradient(to right, colors.$moon-raker, colors.$remy);
+  }
+
+  &--selago-wisppink {
+    background: linear-gradient(to right, colors.$selago, colors.$wisp-pink);
+  }
+
+  &--purple-brinkpink {
+    background: linear-gradient(to right, colors.$purple-01, colors.$brink-pink);
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.vertical-divider {
+  height: 90px;
+  width: 2px;
+  background: linear-gradient(to bottom, colors.$capric, colors.$sagittarius);
+}
+
+.btn-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 34px !important;
+    line-height: 36px !important;
+  }
+
+  h2 {
+    font-size: 26px !important;
+    line-height: 28px !important;
+  }
+
+  h3 {
+    font-size: 18px !important;
+    line-height: 20px !important;
+  }
+}

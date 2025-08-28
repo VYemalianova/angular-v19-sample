@@ -1,0 +1,33 @@
+@use './color-vars.scss' as *;
+
+.bg-black {
+  background-color: $black;
+}
+.bg-white {
+  background-color: $white;
+}
+.bg-gun-powder {
+  background-color: $gun-powder;
+}
+.bg-purple-01 {
+  background-color: $purple-01;
+}
+
+.color-black {
+  color: $black;
+}
+.color-white {
+  color: $white;
+}
+.color-red {
+  color: $red;
+}
+.color-gun-powder {
+  color: $gun-powder;
+}
+.color-purple-01 {
+  color: $purple-01;
+}
+.color-manatee {
+  color: $manatee;
+}
