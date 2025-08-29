@@ -1,0 +1,43 @@
+@use './color-vars.scss' as *;
+
+.mat-mdc-unelevated-button:not(:disabled) {
+  border-radius: 32px;
+
+  &:hover {
+    box-shadow:rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset,
+  }
+
+  &.light-button {
+    color: $purple-01;
+    background-color: $purple-05;
+
+    &:hover {
+      box-shadow: rgba(50, 50, 93, 0.12) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.15) 0px 18px 36px -18px inset;
+    }
+  }
+
+  &.dark-button {
+    background-color: $purple-01;
+  }
+
+  &.gradient-button {
+    background-image: linear-gradient(45deg, $purple-01, $brink-pink),
+  }
+
+  &.text-link-button {
+    color: #08030e;
+    text-decoration: underline;
+    background-color: transparent;
+
+    &:hover {
+      color: $purple-01;
+      box-shadow: none;
+      outline: none;
+      text-decoration: underline;
+    }
+  }
+}
+
+.mat-mdc-unelevated-button {
+  font-size: 14px !important;
+}

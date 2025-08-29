@@ -1,7 +1,5 @@
 <div class="page-layout">
-  <header>
-    <button (click)="sidenav.toggle()">Click me!</button>
-  </header>
+  <app-header [isMobile]="breakpointService.isMobile()" [isMenuOpened]="sidenav.opened" (menuToggle)="sidenav.toggle()"></app-header>
 
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="over" class="sidenav" [opened]="false">
