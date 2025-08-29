@@ -1,1 +1,23 @@
-<router-outlet></router-outlet>
+<div class="page-layout">
+  <header>
+    <button (click)="sidenav.toggle()">Click me!</button>
+  </header>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="over" class="sidenav" [opened]="false">
+      Vertical menu
+    </mat-sidenav>
+
+    <mat-sidenav-content class="sidenav-content">
+      <div>Horizontal menu</div>
+
+      <div class="scrollable-content">
+        <main class="page-content">
+          <router-outlet></router-outlet>
+        </main>
+
+        <footer>footer</footer>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

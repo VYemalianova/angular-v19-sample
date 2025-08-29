@@ -1,0 +1,30 @@
+.page-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-container,
+.sidenav-content {
+  height: 100%;
+}
+
+.sidenav {
+  width: 100%;
+}
+
+.sidenav-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollable-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.page-content {
+  flex: 1;
+}
