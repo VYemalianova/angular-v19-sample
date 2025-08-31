@@ -1,9 +1,9 @@
 @use 'sass:string';
 
-@use 'assets/styles/color-vars.scss' as colors;
-@use 'assets/styles/color-classes.scss';
-@use 'assets/styles/button.scss';
-@use 'assets/styles/mixins/text.scss';
+@use 'styles/color-vars.scss' as colors;
+@use 'styles/color-classes.scss';
+@use 'styles/button.scss';
+@use 'styles/mixins/text.scss';
 
 html, body {
   height: 100%;
