@@ -1,17 +1,18 @@
 import { Component, DestroyRef, inject, OnInit, viewChild } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { filter } from 'rxjs';
 
 import { HeaderComponent } from './components/header/header.component';
 import { BreakpointService } from './services/breakpoint/breakpoint.service';
 import { HorizontalMenuComponent } from './components/nav-menu/horizontal-menu/horizontal-menu.component';
 import { VerticalMenuComponent } from './components/nav-menu/vertical-menu/vertical-menu.component';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { filter } from 'rxjs';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatSidenavModule, HeaderComponent, HorizontalMenuComponent, VerticalMenuComponent],
+  imports: [RouterOutlet, MatSidenavModule, HeaderComponent, HorizontalMenuComponent, VerticalMenuComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
