@@ -1,0 +1,13 @@
+<a class="menu-item" [routerLink]="navigateTo()" mat-menu-item>
+  @if (item().icon) {
+    <app-avatar [imagePath]="item().icon!"></app-avatar>
+  }
+
+  <div class="menu-item__content">
+    <span class="menu-item__value">{{item().value}}</span>
+
+    @if (item().info) {
+      <span class="menu-item__info">{{item().info}}</span>
+    }
+  </div>
+</a>

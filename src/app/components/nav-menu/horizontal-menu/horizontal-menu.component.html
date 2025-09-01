@@ -1,0 +1,57 @@
+<div class="horoscope-nav-wrapper gradient--selago-wisppink">
+  <nav class="horoscope-nav">
+    @if (!isUserLoggedIn) {
+      <a routerLink="/horoscope/daily" mat-flat-button class="text-link-button">
+        Daily Horoscope
+      </a>
+      <a routerLink="/horoscope/love" mat-flat-button class="text-link-button">
+        Love Horoscope
+      </a>
+    } @else {
+      <a mat-flat-button class="text-link-button" [matMenuTriggerFor]="horoscopeMenu">
+        Horoscope Type
+        <mat-icon>arrow_drop_down</mat-icon>
+      </a>
+    }
+
+    <a mat-flat-button class="text-link-button" [matMenuTriggerFor]="signMenu">
+      Daily Sign Horoscope
+      <mat-icon>arrow_drop_down</mat-icon>
+    </a>
+
+    <a mat-flat-button class="text-link-button" [matMenuTriggerFor]="loveMenu">
+      Love Sign Horoscope
+      <mat-icon>arrow_drop_down</mat-icon>
+    </a>
+  </nav>
+</div>
+
+<mat-menu #signMenu="matMenu" xPosition="after">
+  @for (item of signsOptions; track item.id) {
+    <app-menu-item
+      [item]="item"
+      [navigateTo]="'horoscope/' + HoroscopeType.daily + '/' + item.value"
+    >
+    </app-menu-item>
+  }
+</mat-menu>
+
+<mat-menu #loveMenu="matMenu" xPosition="after">
+  @for (item of signsOptions; track item.id) {
+    <app-menu-item
+      [item]="item"
+      [navigateTo]="'horoscope/' + HoroscopeType.love + '/' + item.value"
+    >
+    </app-menu-item>
+  }
+</mat-menu>
+
+<mat-menu #horoscopeMenu="matMenu" xPosition="after">
+  @for (item of horoscopeOptions; track item.id) {
+    <app-menu-item
+      [item]="item"
+      [navigateTo]="'horoscope/' + HoroscopeType.daily"
+    >
+    </app-menu-item>
+  }
+</mat-menu>

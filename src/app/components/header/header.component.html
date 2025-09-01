@@ -1,0 +1,17 @@
+<header class="header gradient--moonraker-remy">
+  <div class="header-content">
+
+  @if (isMobile()) {
+    <button mat-icon-button aria-label="Menu" (click)="menuToggle.emit()">
+      <mat-icon>{{isMenuOpened() ? 'close' : 'menu'}}</mat-icon>
+    </button>
+  } @else {
+    <app-logo></app-logo>
+  }
+
+    <div class="btns-wrapper">
+      <button mat-flat-button color="primary" class="dark-button" (click)="onSignin()">Sign In</button>
+      <button mat-flat-button color="primary" class="gradient-button" (click)="onLivePsychics()">Live Psychics</button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,68 @@
+<div class="horoscope-nav-wrapper gradient--selago-wisppink">
+  <nav class="horoscope-nav">
+    @if (!isUserLoggedIn) {
+      <a routerLink="/horoscope/daily" class="menu-list-item">
+        <strong>Horoscope</strong>
+      </a>
+      <a routerLink="/horoscope/love" class="menu-list-item">
+        <strong>Love Horoscope</strong>
+      </a>
+    }
+
+    <mat-accordion class="accordion" [multi]="false">
+      @if (isUserLoggedIn) {
+        <mat-expansion-panel class="gradient--selago-wisppink">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <strong>Horoscope Type</strong>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          @for (item of horoscopeOptions; track item.id) {
+            <app-menu-item
+              [item]="item"
+              [navigateTo]="'horoscope/' + HoroscopeType.daily"
+            >
+            </app-menu-item>
+          }
+        </mat-expansion-panel>
+      }
+
+      <mat-expansion-panel class="gradient--selago-wisppink">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong>Daily Sign Horoscope</strong>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (item of signsOptions; track item.id) {
+          <app-menu-item
+            [item]="item"
+            [navigateTo]="'horoscope/' + HoroscopeType.daily + '/' + item.value"
+          >
+          </app-menu-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="gradient--selago-wisppink">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong>Love Sign Horoscope</strong>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (item of signsOptions; track item.id) {
+          <app-menu-item
+            [item]="item"
+            [navigateTo]="'horoscope/' + HoroscopeType.love + '/' + item.value"
+          >
+          </app-menu-item>
+        }
+      </mat-expansion-panel>
+    </mat-accordion>
+  </nav>
+
+  <div class="mt-s ml-m">
+    <app-logo></app-logo>
+  </div>
+</div>
