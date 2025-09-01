@@ -3,11 +3,13 @@
 
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="over" class="sidenav" [opened]="false">
-      Vertical menu
+      <app-vertical-menu [isMenuClosed]="!sidenav.opened"></app-vertical-menu>
     </mat-sidenav>
 
     <mat-sidenav-content class="sidenav-content">
-      <app-horizontal-menu></app-horizontal-menu>
+      @if (!breakpointService.isMobile()) {
+        <app-horizontal-menu></app-horizontal-menu>
+      }
 
       <div class="scrollable-content">
         <main class="page-content">
