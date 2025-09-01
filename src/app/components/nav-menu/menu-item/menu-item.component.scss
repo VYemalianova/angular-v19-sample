@@ -1,0 +1,26 @@
+@use 'styles/mixins/text' as text;
+@use 'styles/color-vars' as colors;
+
+.menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  text-decoration: none;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__value {
+    @include text.text(16px, 700, 26px);
+  }
+
+  &__info {
+    @include text.text(12px, 400, 20px);
+    color: colors.$manatee;
+  }
+}
