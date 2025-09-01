@@ -1,0 +1,15 @@
+@use 'styles/mixins/text';
+@use 'styles/color-vars' as colors;
+
+.horoscope-nav-wrapper {
+  width: 100%;
+  padding: 8px 16px;
+}
+
+.horoscope-nav {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
