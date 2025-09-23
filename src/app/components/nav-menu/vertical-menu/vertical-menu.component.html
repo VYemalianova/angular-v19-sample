@@ -1,6 +1,6 @@
 <div class="horoscope-nav-wrapper gradient--selago-wisppink">
   <nav class="horoscope-nav">
-    @if (!isUserLoggedIn) {
+    @if (!isUserLoggedIn()) {
       <a routerLink="/horoscope/daily" class="menu-list-item">
         <strong>Horoscope</strong>
       </a>
@@ -10,7 +10,7 @@
     }
 
     <mat-accordion class="accordion" [multi]="false">
-      @if (isUserLoggedIn) {
+      @if (isUserLoggedIn()) {
         <mat-expansion-panel class="gradient--selago-wisppink">
           <mat-expansion-panel-header>
             <mat-panel-title>

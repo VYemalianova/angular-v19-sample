@@ -1,6 +1,6 @@
 <div class="horoscope-nav-wrapper gradient--selago-wisppink">
   <nav class="horoscope-nav">
-    @if (!isUserLoggedIn) {
+    @if (!isUserLoggedIn()) {
       <a routerLink="/horoscope/daily" mat-flat-button class="text-link-button">
         Daily Horoscope
       </a>

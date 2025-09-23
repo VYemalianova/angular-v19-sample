@@ -5,7 +5,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { HoroscopeType } from '../../../models/horoscope.model';
 import { IOption } from '../../../models/option.model';
-import { AuthService } from '../../../services/auth/auth.service';
 import { SignsService } from '../../../services/signs/signs.service';
 import { getFormattedDateRange } from '../../../utils/dateUtils';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
@@ -20,16 +19,14 @@ import { LogoComponent } from '../../logo/logo.component';
 })
 export class VerticalMenuComponent {
   isMenuClosed = input.required<boolean>();
+  isUserLoggedIn = input.required<boolean>();
 
   private signsService = inject(SignsService);
-  private authService = inject(AuthService);
   private destroyRef = inject(DestroyRef);
 
   private accordion = viewChild.required<MatAccordion>(MatAccordion);
 
   readonly HoroscopeType = HoroscopeType;
-
-  isUserLoggedIn = false;
 
   signsOptions: IOption[] = [];
   horoscopeOptions: IOption[] = [];
@@ -44,8 +41,6 @@ export class VerticalMenuComponent {
   }
 
   ngOnInit(): void {
-    this.isUserLoggedIn = Boolean(this.authService.getUser());
-
     this.horoscopeOptions = Object.entries(HoroscopeType).map(([key, value]) => ({
       id: key,
       value,

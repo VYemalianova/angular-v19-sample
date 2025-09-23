@@ -1,3 +1,4 @@
 export enum localStorageKeys {
-  token = 'token',
+  USER_KEY = 'user',
+  TOKEN_KEY = 'token',
 }

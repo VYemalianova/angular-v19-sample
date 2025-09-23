@@ -9,7 +9,7 @@ import { ISign } from '../../models/sign.model';
   providedIn: 'root'
 })
 export class SignsService {
-  signs: ISign[] = [];
+  private signs: ISign[] = [];
 
   constructor(private readonly http: HttpClient) { }
 

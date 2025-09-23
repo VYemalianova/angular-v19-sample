@@ -1,3 +1,5 @@
+import { IUser } from "./user.model";
+
 export interface IResponse<T> {
   success: boolean;
   message?: string;
@@ -8,4 +10,9 @@ export interface IResponse<T> {
 export interface IFieldError {
   path: string;
   msg: string;
+}
+
+export interface IAuthResponse {
+  user: IUser;
+  token: string;
 }

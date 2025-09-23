@@ -1,14 +1,14 @@
 <div class="page-layout">
-  <app-header [isMobile]="breakpointService.isMobile()" [isMenuOpened]="sidenav.opened" (menuToggle)="sidenav.toggle()"></app-header>
+  <app-header [isMobile]="isMobile()" [isMenuOpened]="sidenav.opened" [isUserLoggedIn]="isUserLoggedIn()" (menuToggle)="sidenav.toggle()"></app-header>
 
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="over" class="sidenav" [opened]="false">
-      <app-vertical-menu [isMenuClosed]="!sidenav.opened"></app-vertical-menu>
+      <app-vertical-menu [isMenuClosed]="!sidenav.opened" [isUserLoggedIn]="isUserLoggedIn()"></app-vertical-menu>
     </mat-sidenav>
 
     <mat-sidenav-content class="sidenav-content">
-      @if (!breakpointService.isMobile()) {
-        <app-horizontal-menu></app-horizontal-menu>
+      @if (!isMobile) {
+        <app-horizontal-menu [isUserLoggedIn]="isUserLoggedIn()"></app-horizontal-menu>
       }
 
       <div class="scrollable-content">
