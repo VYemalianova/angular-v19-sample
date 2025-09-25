@@ -40,10 +40,6 @@ export class AppComponent implements OnInit {
 
     this.authService.user$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((user) => {
       this.isUserLoggedIn.set(Boolean(user));
-
-      if (!user) {
-        this.authService.clearAuthData();
-      }
     });
   }
 

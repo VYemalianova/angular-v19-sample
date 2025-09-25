@@ -4,10 +4,10 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { MatButtonModule } from '@angular/material/button';
 
 import { controlMatchValidator } from '../../../validators/password-match.validator';
 import { AuthService } from '../../../services/auth/auth.service';
-import { MatButtonModule } from '@angular/material/button';
 
 enum AuthMode {
   signup = 'signup',
