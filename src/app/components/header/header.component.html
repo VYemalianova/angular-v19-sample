@@ -10,7 +10,12 @@
   }
 
     <div class="btns-wrapper">
-      <button mat-flat-button color="primary" class="dark-button" (click)="onSignin()">Sign In</button>
+      @if (isUserLoggedIn()) {
+        <button mat-flat-button color="primary" class="dark-button" (click)="onSignout()">Sign out</button>
+      } @else {
+        <button mat-flat-button color="primary" class="dark-button" (click)="onSignin()">Sign In</button>
+      }
+
       <button mat-flat-button color="primary" class="gradient-button" (click)="onLivePsychics()">Live Psychics</button>
     </div>
   </div>
