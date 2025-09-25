@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './contact-us.component.scss'
 })
 export class ContactUsComponent {
-
+  socialNetworkList = ['facebook', 'instagram', 'pinterest', 'reddit', 'twitter'];
 }

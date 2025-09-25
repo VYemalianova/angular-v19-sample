@@ -1,0 +1,33 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 16px;
+}
+
+.contact-us-content h1 {
+  text-align: center;
+}
+
+.social-media-icons {
+  display: flex;
+  gap: 32px;
+  margin-top: 16px;
+
+  img:hover {
+    box-shadow: rgba(57, 53, 62, 1) 0px 3px 8px;
+    border-radius: 5px;
+  }
+}
+
+.mailto-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+
+  h4 {
+    margin-top: 0;
+  }
+}

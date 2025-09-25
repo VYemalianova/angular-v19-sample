@@ -1,1 +1,29 @@
-<p>contact-us works!</p>
+<div class="content-wrapper color-gun-powder content-wrapper">
+  <div class="contact-us-content mt-xl">
+    <h1 class="gradient--text">Contact Our Team</h1>
+    <p>
+      We exist! You can fill out our form to ask a question or tell us more about your
+      inquiries. This is the fastest and easiest way to reach us. We honestly and
+      enthusiastically read each and every message we get. And we always write back.
+    </p>
+  </div>
+
+  <div class="social-media-content">
+    <h4 class="text-caps">You can also follow us on social media:</h4>
+    <div class="social-media-icons">
+      @for (network of socialNetworkList; track $index) {
+        <img [src]="'assets/images/icons/social-icons/' + network + '.svg'" class="cursor-pointer" />
+      }
+    </div>
+
+    <div class="mailto-wrapper">
+      <h4 class="text-caps">our email:</h4>
+      <a
+        href="mailto:example@example.com?subject=contact with support"
+        class="link__underline"
+      >
+        support&#64;astroyod.com
+      </a>
+    </div>
+  </div>
+</div>
