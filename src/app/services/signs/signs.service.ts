@@ -22,7 +22,7 @@ export class SignsService {
       map((response) => (response.data?.map(sign => ({
         ...sign,
         iconDir: `assets/images/icons/sign-icons/${sign.signType}.svg`,
-        imageDir:`assets/images/icons/sign-images/${sign.signType}.svg`,
+        imageDir:`assets/images/icons/sign-images/${sign.signType}.png`,
       })) as ISign[]))
     )
   }

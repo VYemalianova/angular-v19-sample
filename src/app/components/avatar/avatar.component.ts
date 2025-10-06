@@ -8,5 +8,7 @@ import { Component, input } from '@angular/core';
 })
 export class AvatarComponent {
   imagePath = input.required<string>();
+  width = input<string>();
+  height = input<string>();
   backgroundColor = input('linear-gradient(to right, #630cd2, #f95f86)');
 }

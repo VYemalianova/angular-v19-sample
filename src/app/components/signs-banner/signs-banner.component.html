@@ -1,0 +1,33 @@
+<div class="sign-banner gradient--selago-wisppink">
+  @if (!isHeaderHidden()) {
+    <div class="mb-xl">
+      <h1 class="gradient--text text-capitalize text-center mt-s">
+        {{ type() }} Horoscopes
+      </h1>
+
+      @if (date()) {
+        <span class="text-caps color-gun-powder">
+          {{ date() | date:'MMM d' }}
+        </span>
+      }
+
+      <span class="subtitle color-gun-powder text-center">
+        Choose your sign to read your horoscope
+      </span>
+    </div>
+  }
+
+  <div class="signs-grid">
+    @for (sign of signs; track sign.id) {
+      <a
+        [routerLink]="['/horoscope', type, sign.signType]"
+        class="link sign-item"
+      >
+        <app-avatar [imagePath]="sign.imageDir" backgroundColor="transparent" width="67px" height="67px"></app-avatar>
+
+        <span class="type text-capitalize">{{ sign.signType }}</span>
+        <span class="date">{{ getDateRange(sign.startDate, sign.endDate) }}</span>
+      </a>
+    }
+  </div>
+</div>

@@ -1,0 +1,57 @@
+@use 'styles/mixins/text.scss';
+@use 'styles/color-vars.scss' as colors;
+
+.sign-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+
+  .subtitle {
+    @include text.text(20px, 400, 32px);
+  }
+}
+
+.signs-grid {
+  max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+.sign-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .type {
+    @include text.text(20px, 700, 26px);
+  }
+
+  .date {
+    @include text.text(16px, 400, 26px);
+    color: colors.$manatee;
+  }
+}
+
+@media (max-width: 1000px) {
+  .sign-banner {
+    padding: 16px;
+
+    .subtitle {
+      @include text.text(16px, 400, 32px);
+    }
+  }
+
+  .sign-item {
+    .type {
+      font-size: 16px;
+    }
+
+    .date {
+      font-size: 12px;
+    }
+  }
+}
