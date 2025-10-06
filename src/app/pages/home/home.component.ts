@@ -1,13 +1,18 @@
 import { Component, effect, ElementRef, viewChild } from '@angular/core';
 
+import { SignsBannerComponent } from '../../components/signs-banner/signs-banner.component';
+import { HoroscopeType } from '../../models/horoscope.model';
+
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [SignsBannerComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   private aboutUsSection = viewChild<ElementRef<HTMLDivElement>>('aboutUsSection');
+  
+  readonly HoroscopeType = HoroscopeType;
 
   constructor() {
     effect(() => {

@@ -20,7 +20,7 @@
   <div class="signs-grid">
     @for (sign of signs; track sign.id) {
       <a
-        [routerLink]="['/horoscope', type, sign.signType]"
+        [routerLink]="['/horoscope', type(), sign.signType]"
         class="link sign-item"
       >
         <app-avatar [imagePath]="sign.imageDir" backgroundColor="transparent" width="67px" height="67px"></app-avatar>
