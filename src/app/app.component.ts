@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
+import { Component, computed, DestroyRef, inject, OnInit, signal, viewChild } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   private sidenav = viewChild.required<MatSidenav>(MatSidenav);
 
   isMobile = this.breakpointService.isMobile.asReadonly();
-  isUserLoggedIn = signal(false);
+  isUserLoggedIn = computed(() => Boolean(this.authService.user()));
 
   ngOnInit(): void {
     this.router.events.pipe(
@@ -37,10 +37,5 @@ export class AppComponent implements OnInit {
             this.sidenav().close();
           }
         });
-
-    this.authService.user$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((user) => {
-      this.isUserLoggedIn.set(Boolean(user));
-    });
   }
-
 }

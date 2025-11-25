@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, of } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 
 import { IResponse } from '../../models/response';
 import { ISign } from '../../models/sign.model';
@@ -19,11 +19,22 @@ export class SignsService {
     }
 
     return this.http.get<IResponse<ISign[]>>('/signs').pipe(
-      map((response) => (response.data?.map(sign => ({
+      map((response) => (this.transformSignsData(response.data!))),
+      catchError(() => {
+        return this.http.get<ISign[]>('/assets/mocks/signs.json',  { params: { requestType: 'internal' } }).pipe(
+          map((data) => (this.transformSignsData(data!))),
+        );
+      }),
+      tap((signs) => this.signs = signs),
+    );
+  }
+
+  private transformSignsData(data: ISign[]): ISign[] {
+    return data?.map(sign => ({
         ...sign,
+        // TODO: add id
         iconDir: `assets/images/icons/sign-icons/${sign.signType}.svg`,
-        imageDir:`assets/images/icons/sign-images/${sign.signType}.png`,
-      })) as ISign[]))
-    )
+        imageDir: `assets/images/icons/sign-images/${sign.signType}.png`,
+      })) as ISign[];
   }
 }

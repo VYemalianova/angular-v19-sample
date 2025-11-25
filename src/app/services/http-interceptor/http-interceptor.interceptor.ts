@@ -8,7 +8,9 @@ import { AuthService } from '../auth/auth.service';
 export const httpInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const accessToken = authService.getAccessToken();
-  const apiUrl = environment.apiUrl;
+  const requestType = req.params.get('requestType') ?? 'external';
+  const isInternalRequest = requestType === 'internal';
+  const apiUrl = isInternalRequest ? 'http://localhost:4200' : environment.apiUrl;
 
   if (accessToken) {
     req = req.clone({
