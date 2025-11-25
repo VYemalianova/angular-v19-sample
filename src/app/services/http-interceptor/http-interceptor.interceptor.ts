@@ -4,6 +4,8 @@ import { catchError, throwError } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../auth/auth.service';
+import { ToasterService } from '../toaster/toaster.service';
+import { ToastNotificationType } from '../../models/notification-type.enum';
 
 export const httpInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
@@ -35,5 +37,15 @@ export const httpInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
 
 
 const handleError = (res: HttpErrorResponse) => {
-  console.error(res.status, res.statusText);
+  const authService = inject(AuthService);
+  const toasterService = inject(ToasterService);
+
+  if (res.status === 401) {
+    authService.clearAuthData();
+
+    toasterService.openToast({
+      type: ToastNotificationType.Error,
+      title: 'Missing or invalid authentication token.',
+    });
+  }
 }

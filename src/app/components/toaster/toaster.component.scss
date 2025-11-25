@@ -1,0 +1,59 @@
+@use 'styles/color-vars.scss' as colors;
+  
+.toaster-success,
+.toaster-error,
+.toaster-info,
+.toaster-warn {
+  display: flex;
+  gap: 12px;
+
+  // First item is icon.
+  > :nth-child(1) {
+    font-size: 28px;
+    flex: 0 0 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  > :nth-child(2) {
+    flex: 1 1 auto;
+    display: flex;
+    gap: 1px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  // The last item is close icon.
+  > :nth-child(3) {
+    font-size: 16px;
+    flex: 0 0 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: colors.$white;
+    cursor: pointer;
+  }
+}
+
+.toaster-success > :nth-child(1) {
+  color: #7caf41;
+}
+.toaster-error > :nth-child(1) {
+  color: #ea694f;
+}
+.toaster-info > :nth-child(1) {
+  color: #6ea6be;
+}
+.toaster-warn > :nth-child(1) {
+  color: #f3a220;
+}
+
+.title {
+  max-width: 240px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
