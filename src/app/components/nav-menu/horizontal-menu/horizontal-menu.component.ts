@@ -35,7 +35,7 @@ export class HorizontalMenuComponent {
       value,
     }));
     
-    this.signsService.getSigns().pipe(takeUntilDestroyed(this.destroyRef)).subscribe((signs: ISign[]) => {
+    this.signsService.getSignList().pipe(takeUntilDestroyed(this.destroyRef)).subscribe((signs: ISign[]) => {
       this.signsOptions = signs.map((sign) => ({
         id: sign.id,
         value: sign.signType,

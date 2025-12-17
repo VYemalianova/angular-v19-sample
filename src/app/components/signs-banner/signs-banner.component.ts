@@ -26,7 +26,7 @@ export class SignsBannerComponent implements OnInit {
   signs!: ISign[];
 
   ngOnInit(): void {
-    this.signsService.getSigns().pipe(takeUntilDestroyed(this.destroyRef)).subscribe((signs: ISign[]) => {
+    this.signsService.getSignList().pipe(takeUntilDestroyed(this.destroyRef)).subscribe((signs: ISign[]) => {
       this.signs = signs;
     });
   }

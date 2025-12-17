@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SignDetailsComponent } from './sign-details.component';
+import { ErrorScreenComponent } from './error-screen.component';
 
-describe('SignDetailsComponent', () => {
-  let component: SignDetailsComponent;
-  let fixture: ComponentFixture<SignDetailsComponent>;
+describe('ErrorScreenComponent', () => {
+  let component: ErrorScreenComponent;
+  let fixture: ComponentFixture<ErrorScreenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SignDetailsComponent]
+      imports: [ErrorScreenComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SignDetailsComponent);
+    fixture = TestBed.createComponent(ErrorScreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

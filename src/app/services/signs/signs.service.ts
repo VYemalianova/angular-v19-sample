@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of, tap } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 
 import { IResponse } from '../../models/response';
-import { ISign } from '../../models/sign.model';
+import { ISign, SignType } from '../../models/sign.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,28 +14,37 @@ export class SignsService {
 
   constructor(private readonly http: HttpClient) { }
 
-  getSigns(): Observable<ISign[]> {
+  getSignList(): Observable<ISign[]> {
     if (this.signs.length) {
       return of(this.signs);
     }
 
     return this.http.get<IResponse<ISign[]>>('/signs').pipe(
-      map((response) => (this.transformSignsData(response.data!))),
+      map((response) => (response.data?.map(sign => this.transformSign(sign))) ?? []),
       catchError(() => {
         return this.http.get<ISign[]>('/assets/mocks/signs.json',  { params: { requestType: 'internal' } }).pipe(
-          map((data) => (this.transformSignsData(data!))),
+          map((data) => (data?.map(sign => this.transformSign(sign)))),
         );
       }),
       tap((signs) => this.signs = signs),
     );
   }
 
-  private transformSignsData(data: ISign[]): ISign[] {
-    return data?.map(sign => ({
-        ...sign,
-        // TODO: add id
-        iconDir: `assets/images/icons/sign-icons/${sign.signType}.svg`,
-        imageDir: `assets/images/icons/sign-images/${sign.signType}.png`,
-      })) as ISign[];
+  getSign(signType: SignType): Observable<ISign> {
+    return this.http.get<IResponse<ISign>>(`/signs/${signType}`).pipe(
+      map((response) => (this.transformSign(response.data as ISign))),
+      catchError(() => {
+        return this.getSignList().pipe(map((signs: ISign[]) => this.transformSign((signs.find((el) => el.signType === signType) as ISign))))
+      }),
+    );
+  }
+
+  private transformSign(sign: ISign): ISign {
+    return {
+      ...sign,
+      ...(!sign.id && {id : uuidv4()}),
+      iconDir: `assets/images/icons/sign-icons/${sign.signType}.svg`,
+      imageDir: `assets/images/icons/sign-images/${sign.signType}.png`,
+    }
   }
 }

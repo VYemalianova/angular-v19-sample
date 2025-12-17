@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, filter, map, Observable, tap } from 'rxjs';
+import { filter, map, Observable, tap } from 'rxjs';
 
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { localStorageKeys } from '../../models/localStorageKeys.enum';

@@ -46,7 +46,7 @@ export class VerticalMenuComponent {
       value,
     }));
     
-    this.signsService.getSigns().pipe(takeUntilDestroyed(this.destroyRef)).subscribe((signs) => {
+    this.signsService.getSignList().pipe(takeUntilDestroyed(this.destroyRef)).subscribe((signs) => {
       this.signsOptions = signs.map((sign) => ({
         id: sign.id,
         value: sign.signType,

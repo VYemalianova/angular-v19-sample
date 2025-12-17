@@ -1,0 +1,23 @@
+.horoscope-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 32px 16px;
+  }
+}
+
+.description {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 24px 16px;
+
+  p {
+    max-width: 720px;
+  }
+}

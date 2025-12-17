@@ -15,8 +15,8 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/horoscope/horoscope.routes').then((m) => m.horoscopeRoutes),
   },
   {
-    path: '404',
+    path: 'not-found',
     loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),
   },
-  { path: '**', redirectTo: '404', pathMatch: 'full' },
+  { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];
